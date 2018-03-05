@@ -12,15 +12,6 @@ from pprint import pprint
 from twilio.rest import Client
 from mydata import account_sid, auth_token, twilio_phone, receiving_phone
 
-# define a function finding city name and country code based on coordinates info
-def find_cityinfo_fromcoord(coordinates):
-    lat, lon = coordinates
-    city = citipy.nearest_city(lat, lon)
-    country_code = city.country_code
-    name = city.city_name
-    print(f"The country code of {name} is '{country_code}'.")
-    return name, country_code
-
 # define a fuction to get weather forecast from OpenWeatherMap API
 def get_5D_weather_forecast(city, country):
     base_url = 'http://api.openweathermap.org/data/2.5/forecast?'
