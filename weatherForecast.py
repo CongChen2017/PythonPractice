@@ -13,25 +13,25 @@ from twilio.rest import Client
 def get_5D_weather_forecast(city, country):
     base_url = 'http://api.openweathermap.org/data/2.5/forecast?'
     # Build query URL
-    query_url = f"{base_url}appid={OpenWeather_api_key}&q={city},{country}&units=metric"
+    query_url = f"{base_url}appid={OpenWeather_api_key}&q={city},{country}&units=metric&lang=zh_cn"
     # Get weather data
     weather_json = requests.get(query_url).json()
     # generate lists for message
     time = [weather_json['list'][i]['dt_txt'] for i in range(0, 40, 8)]
-    weather = [weather_json['list'][i]['weather'][0]['main'] for i in range(0, 40, 8)]
+    weather = [weather_json['list'][i]['weather'][0]['description'] for i in range(0, 40, 8)]
     temp = [weather_json['list'][i]['main']['temp'] for i in range(0, 40, 8)]
     # generate message
     message = f'''
     {time[0]}
-    天气：{weather[0]} 气温：{temp[0]}度
+    {weather[0]}; 气温: {temp[0]}度
     {time[1]}
-    天气：{weather[1]} 气温：{temp[1]}度
+    {weather[1]}; 气温: {temp[1]}度
     {time[2]}
-    天气：{weather[2]} 气温：{temp[2]}度
+    {weather[2]}; 气温: {temp[2]}度
     {time[3]}
-    天气：{weather[3]} 气温：{temp[3]}度
+    {weather[3]}; 气温: {temp[3]}度
     {time[4]}
-    天气：{weather[4]} 气温：{temp[4]}度
+    {weather[4]}; 气温: {temp[4]}度
     '''
     return message
 
