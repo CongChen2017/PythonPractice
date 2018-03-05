@@ -4,7 +4,6 @@
 # English text message and other phone numbers. 
 
 # Dependencies
-from citipy import citipy
 import json
 import requests
 from mydata import OpenWeather_api_key
