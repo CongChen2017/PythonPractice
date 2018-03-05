@@ -10,7 +10,7 @@ import requests
 from mydata import OpenWeather_api_key
 from pprint import pprint
 from twilio.rest import Client
-from mydata import account_sid, auth_token
+from mydata import account_sid, auth_token, twilio_phone, receiving_phone
 
 # define a function finding city name and country code based on coordinates info
 def find_cityinfo_fromcoord(coordinates):
@@ -52,7 +52,7 @@ def send_SMS_message(to_phone_number, body):
     client = Client(account_sid, auth_token)
     client.api.account.messages.create(
         to=to_phone_number,
-        from_="+13029248515",
+        from_=twilio_phone,
         body=body)
 
 # get weather forecast for cities
@@ -69,5 +69,4 @@ final_message = f'''------------
     '''
 
 # send out SMS message through Twilio
-receiving_phone = "+13124592297"
 send_SMS_message(receiving_phone, final_message)
