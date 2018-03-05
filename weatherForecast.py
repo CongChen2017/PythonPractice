@@ -6,10 +6,8 @@
 # Dependencies
 import json
 import requests
-from mydata import OpenWeather_api_key
-from pprint import pprint
+from mydata import OpenWeather_api_key, account_sid, auth_token, twilio_phone, receiving_phone
 from twilio.rest import Client
-from mydata import account_sid, auth_token, twilio_phone, receiving_phone
 
 # define a fuction to get weather forecast from OpenWeatherMap API
 def get_5D_weather_forecast(city, country):
